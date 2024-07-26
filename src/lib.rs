@@ -158,3 +158,9 @@ pub mod prelude {
     pub use super::Statement;
     pub use super::Type;
 }
+
+/// (Documentation only) Guide and reference for `sqlx.toml` files.
+#[cfg(doc)]
+pub mod config {
+    pub use sqlx_core::config::*;
+}

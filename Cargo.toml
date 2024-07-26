@@ -52,11 +52,16 @@ features = ["all-databases", "_unstable-all-types"]
 rustdoc-args = ["--cfg", "docsrs"]
 
 [features]
-default = ["any", "macros", "migrate", "json"]
+default = ["any", "macros", "migrate", "json", "config-all"]
 
 derive = ["sqlx-macros/derive"]
 macros = ["derive", "sqlx-macros/macros"]
 migrate = ["sqlx-core/migrate", "sqlx-macros?/migrate", "sqlx-mysql?/migrate", "sqlx-postgres?/migrate", "sqlx-sqlite?/migrate"]
+
+# Enable parsing of `sqlx.toml` for configuring macros, migrations, or both
+config-macros = ["sqlx-core/config-macros"]
+config-migrate = ["sqlx-core/config-migrate"]
+config-all = ["config-macros", "config-migrate"]
 
 # intended mainly for CI and docs
 all-databases = ["mysql", "sqlite", "postgres", "any"]
