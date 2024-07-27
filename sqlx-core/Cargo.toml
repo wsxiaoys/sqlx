@@ -12,7 +12,7 @@ features = ["offline"]
 
 [features]
 default = []
-migrate = ["sha2", "crc"]
+migrate = ["sha2", "crc", "config-migrate"]
 
 any = []
 
@@ -28,9 +28,11 @@ _tls-none = []
 # support offline/decoupled building (enables serialization of `Describe`)
 offline = ["serde", "either/serde"]
 
-config-toml = ["serde", "toml/parse"]
-config-macros = ["config-toml"]
-config-migrate = ["config-toml"]
+config = ["serde", "toml/parse"]
+config-macros = ["config"]
+config-migrate = ["config"]
+
+_unstable-doc = ["config-macros", "config-migrate"]
 
 [dependencies]
 # Runtimes
